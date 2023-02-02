@@ -7,6 +7,37 @@ function App() {
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=895284fb2d2c50a520ea537456963d9c`
 
+   
+  function upper(){
+    if(data.main.temp.toFixed()<30){
+      console.log("Cold!")
+      return("Too freaking cold, stay inside make some tea and read");}
+    if(data.main.temp.toFixed()<30){
+      console.log("Cold!")
+      return("Outerlayer and long sleves");
+    }
+    else if (data.main.temp.toFixed()<50)
+    {
+      return("Long sleves");
+
+    }
+    else if (data.main.temp.toFixed()<70)
+    {
+      return("Short sleeves sleves");
+
+    }else{
+      return("Short sleeves sleves");
+
+    }
+  }
+    function lower(){return("WIP")}
+    function accessories(){return("WIP")}
+   
+    var Upper = upper();
+    var Lower= lower();
+    var Accessories = accessories();
+
+
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
       axios.get(url).then((response) => {
@@ -14,9 +45,14 @@ function App() {
         console.log(response.data)
       })
       setLocation('')
+      
     }
+  
+    
+    
   }
  
+  
 
   return (
     <div className="app">
@@ -38,6 +74,11 @@ function App() {
           </div>
           <div className="description">
             {data.weather ? <p>{data.weather[0].main}</p> : null}
+          </div>
+          <div className="Clothes">
+            <p>{Upper}</p> 
+            <p>{Lower}</p> 
+            <p>{Accessories}</p> 
           </div>
         </div>
 
